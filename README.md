@@ -162,15 +162,15 @@ Three vlr.gg pages whatever the series length: the match page and its performanc
 
 ### Player stats
 
-`GET /v1/stats` is vlr.gg's stats table, best rating first, up to 500 players.
+`GET /v1/stats` is vlr.gg's stats table, best rating first, up to 500 players. The defaults are the ones vlr.gg's own stats page opens with.
 
 | Parameter | Values | Default |
 |---|---|---|
-| `tier` | `all`, `vct`, `vcl`, `t3`, `gc` (Game Changers), `cg` (collegiate), `off` (offseason) | `all` |
+| `tier` | `all`, `vct`, `vcl`, `t3`, `gc` (Game Changers), `cg` (collegiate), `off` (offseason) | `vct` |
 | `region` | `all`, `americas`, `emea`, `pacific`, `china`, `intl` | `all` |
-| `timespan` | `30d`, `60d`, `90d`, `all` | `all` |
-| `min_rounds` | 0–999 | 200 |
-| `min_rating` | `0`, `1300`, `1400`, `1500`, `1550`, `1650`, `1750`, `1850` | 1550 |
+| `timespan` | `30d`, `60d`, `90d`, `all` | `60d` |
+| `min_rounds` | 0–999 | 100 |
+| `min_rating` | `0`, `1300`, `1400`, `1500`, `1550`, `1650`, `1750`, `1850` | `0` |
 
 ### Ranking regions
 

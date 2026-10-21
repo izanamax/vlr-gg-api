@@ -93,6 +93,11 @@ def test_lists_and_profiles(api):
     assert api.get("/v1/news").json()["meta"]["count"] == 30
 
 
+def test_stats_defaults_match_the_vlr_stats_page(api, vlr):
+    api.get("/v1/stats")
+    assert "tier=vct&region=all&span=60d&min_rounds=100&min_rating=0&page=1" in vlr.calls[0]
+
+
 def test_errors_are_one_shape(api):
     response = api.get("/v1/matches", params={"limit": 0})
     assert response.status_code == 400

@@ -180,13 +180,16 @@ async def rankings(region: RankingRegion):
 
 @router.get("/stats", response_model=Page[PlayerStats], tags=["Rankings & stats"], summary="Player stats")
 async def player_stats(
-    tier: StatsTier = Query("all", description="Circuit: VCT, VCL (challengers), T3, Game Changers, collegiate, offseason"),
+    tier: StatsTier = Query("vct", description="Circuit: VCT, VCL (challengers), T3, Game Changers, collegiate, offseason"),
     region: StatsRegion = "all",
-    timespan: Timespan = "all",
-    min_rounds: int = Query(200, ge=0, le=999),
-    min_rating: int = Query(1550, ge=0, le=5000, description="vlr.gg team rating floor: 0, 1300, 1400, 1500, 1550, 1650, 1750 or 1850"),
+    timespan: Timespan = "60d",
+    min_rounds: int = Query(100, ge=0, le=999),
+    min_rating: int = Query(0, ge=0, le=5000, description="vlr.gg team rating floor: 0, 1300, 1400, 1500, 1550, 1650, 1750 or 1850"),
 ):
-    """Up to 500 players, best rating first. For one event use `/v1/events/{id}/stats`."""
+    """Up to 500 players, best rating first. Defaults are those of vlr.gg's own stats page.
+
+    For one event use `/v1/events/{id}/stats`.
+    """
     return _page(await service.player_stats(
         tier=tier, region=region, timespan=timespan, min_rounds=min_rounds, min_rating=min_rating,
     ))
