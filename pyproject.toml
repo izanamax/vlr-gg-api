@@ -1,0 +1,25 @@
+[project]
+name = "vlr-gg-api"
+version = "1.0.0"
+description = "Unofficial REST API for vlr.gg Valorant esports data"
+readme = "README.md"
+license = "MIT"
+authors = [{ name = "Mussin Maxim" }]
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi==0.141.1",
+    "httpx==0.28.1",
+    "selectolax==0.4.12",
+    "uvicorn==0.53.0",
+    "tzdata>=2024.1",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=9", "ruff>=0.17"]
+
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["vlrgg*"]

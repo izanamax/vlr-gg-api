@@ -1,0 +1,9 @@
+services:
+  api:
+    build: .
+    image: vlr-gg-api
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
